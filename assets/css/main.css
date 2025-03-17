@@ -157,8 +157,9 @@ h6 {
 }
 
 .header .logo img {
-  max-height: 32px;
+  max-height: 125px;
   margin-right: 8px;
+  transition: all 0.3s ease;
 }
 
 .header .logo h1 {
@@ -176,6 +177,15 @@ h6 {
 ------------------------------*/
 .scrolled .header {
   --background-color: #aaaaaae0;
+  --heading-color: #000000; 
+}
+
+.scrolled .header a{
+  color:#fff;
+}
+
+.scrolled.header .logo img{
+  max-height: 50px;
 }
 
 /*--------------------------------------------------------------
@@ -227,6 +237,7 @@ h6 {
   .navmenu .active,
   .navmenu .active:focus {
     background-color: var(--nav-hover-color);
+    color: #fff;
   }
 
   .navmenu .dropdown ul {
@@ -577,6 +588,7 @@ h6 {
   padding: 160px 0 80px 0;
   text-align: center;
   position: relative;
+  margin-top: 30px;
 }
 
 .page-title-service {
@@ -662,14 +674,14 @@ section,
   position: relative;
 }
 
-.section-title h2::after {
+/*.section-title h2::after {
   content: "";
   width: 120px;
   height: 1px;
   display: inline-block;
   background: var(--accent-color);
   margin: 4px 10px;
-}
+}*/
 
 .section-title p {
   color: var(--heading-color);
@@ -702,7 +714,7 @@ section,
   flex-direction: column;
   text-align: center;
   position: relative;
-  min-height: 75vh;
+  min-height: 90vh;
   padding-top: 60px;
 }
 
@@ -748,11 +760,12 @@ section,
   margin: 10px;
   animation-delay: 0.8s;
   color: var(--default-color);
+  background-color: #292A6E;
   border: 2px solid var(--accent-color);
 }
 
 .hero .btn-get-started:hover {
-  background: var(--accent-color);
+  background: transparent;
   color: var(--contrast-color);
   text-decoration: none;
 }
@@ -1178,6 +1191,49 @@ section,
 /*--------------------------------------------------------------
 # Testimonials Section
 --------------------------------------------------------------*/
+.testimonials .testimonial-filters {
+  padding: 0;
+  margin: 0 auto 20px auto;
+  list-style: none;
+  text-align: center;
+}
+
+.testimonials .testimonial-filters li {
+  cursor: pointer;
+  display: inline-block;
+  padding: 8px 20px 10px 20px;
+  margin: 0;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1;
+  margin-bottom: 5px;
+  border-radius: 50px;
+  transition: all 0.3s ease-in-out;
+  font-family: var(--heading-font);
+}
+
+.testimonials .testimonial-filters li:hover,
+.testimonials .testimonial-filters li.filter-active {
+  color: var(--contrast-color);
+  background-color: var(--accent-color);
+}
+
+.testimonials .testimonial-filters li:first-child {
+  margin-left: 0;
+}
+
+.testimonials .testimonial-filters li:last-child {
+  margin-right: 0;
+}
+
+@media (max-width: 575px) {
+  .testimonials .testimonial-filters li {
+    font-size: 14px;
+    margin: 0 0 10px 0;
+  }
+}
+
+
 .testimonials .testimonial-item {
   background-color: var(--surface-color);
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
@@ -1985,6 +2041,12 @@ section,
 --------------------------------------------------------------*/
 .starter-section {
   /* Add your styles here */
+}
+
+#quem-somos img {
+  max-width: 50%;
+  height: auto;
+  border-radius: 10px;
 }
 
 /*--------------------------------------------------------------
