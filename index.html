@@ -812,6 +812,82 @@
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
+    const primaryFilters = document.querySelectorAll(".portfolio-filters:first-of-type li");
+    const secondaryFilterBar = document.querySelector(".portfolio-filters:nth-of-type(2)");
+    const secondaryFilters = secondaryFilterBar ? secondaryFilterBar.querySelectorAll("li") : [];
+    const portfolioItems = document.querySelectorAll(".portfolio-item");
+
+    let activePrimary = "*";
+    let activeSecondary = "*";
+
+    // Esconde a segunda barra inicialmente
+    if (secondaryFilterBar) {
+      secondaryFilterBar.style.display = "none";
+    }
+
+    // Função de filtragem combinada
+    function applyCombinedFilter() {
+      portfolioItems.forEach(item => {
+        const matchesPrimary = activePrimary === "*" || item.classList.contains(activePrimary.replace(".", ""));
+        const matchesSecondary = activeSecondary === "*" || item.classList.contains(activeSecondary.replace(".", ""));
+
+        if (matchesPrimary && matchesSecondary) {
+          item.style.display = "block";
+        } else {
+          item.style.display = "none";
+        }
+      });
+    }
+
+    // Clique na barra primária
+    primaryFilters.forEach(item => {
+      item.addEventListener("click", function () {
+        // Atualiza filtro primário
+        activePrimary = this.getAttribute("data-filter");
+
+        // Exibe ou esconde barra secundária
+        if (secondaryFilterBar) {
+          secondaryFilterBar.style.display = (activePrimary === "*") ? "none" : "flex";
+        }
+
+        // Atualiza visual dos filtros
+        primaryFilters.forEach(el => el.classList.remove("filter-active"));
+        this.classList.add("filter-active");
+
+        // Reseta filtro secundário ao mudar o primário
+        activeSecondary = "*";
+        secondaryFilters.forEach(el => el.classList.remove("filter-active"));
+
+        // Aplica filtro combinado
+        applyCombinedFilter();
+      });
+    });
+
+    // Clique na barra secundária
+    secondaryFilters.forEach(item => {
+      item.addEventListener("click", function () {
+        activeSecondary = this.getAttribute("data-filter");
+
+        // Atualiza visual do secundário
+        secondaryFilters.forEach(el => el.classList.remove("filter-active"));
+        this.classList.add("filter-active");
+
+        // Aplica filtro combinado
+        applyCombinedFilter();
+      });
+    });
+
+    // Aplica o filtro inicial
+    applyCombinedFilter();
+  });
+</script>
+
+<!--<div class="portfolio-item isotope-item filter-product filter-lacteos">
+COLOCAR ASSIM NAS IMAGENS
+-->
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
     const filterItems = document.querySelectorAll(".portfolio-filters:first-child li");
     const secondFilterBar = document.querySelector(".portfolio-filters:nth-of-type(2)");
 
