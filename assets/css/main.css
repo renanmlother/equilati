@@ -699,13 +699,18 @@ section,
   width: 100%;
   overflow: hidden;
   position: relative;
-  background-image: url(../img/equipamentos_slide_teste.jpg);
+  background-image: url(../img/heroteste.png);
+  background-size: cover; /* Preenche completamente o container */
+  background-repeat: no-repeat;
+  background-position: center;
   padding: 0;
   display: flex;
   flex-direction: column;
   justify-content: end;
   align-items: center;
+  min-height: 100vh; /* Garante altura cheia da tela */
 }
+
 
 .hero .carousel-container {
   display: flex;
